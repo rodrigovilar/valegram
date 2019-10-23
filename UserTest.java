@@ -1,4 +1,4 @@
-
+import java.util.List;
 
 import static org.junit.Assert.*;
 import org.junit.After;
@@ -75,7 +75,46 @@ public class UserTest
         assertEquals("rodrigo", post1.getAuthor().getLogin());
     }
 
+
+    @Test
+    public void twoUsersWithPosts()
+    {
+        User user1 = new User();
+        User user2 = new User();
+        user1.setLogin("douglas");
+        user2.setLogin("vinnicius");
+        Post post1 = new Post();
+        post1.setDescription("Partiu Tekfim");
+        post1.setAuthor(user1);
+        user1.addPost(post1);
+        Post post2 = new Post();
+        post2.setDescription("Tô riko!");
+        post2.setAuthor(user1);
+        user1.addPost(post2);
+        Post post3 = new Post();
+        post3.setDescription("APS é peso!");
+        post3.setAuthor(user1);
+        user1.addPost(post3);
+        Post post4 = new Post();
+        post4.setAuthor(user2);
+        post4.setDescription("Ouviram do Ipiranga");
+        user2.addPost(post4);
+        Post post5 = new Post();
+        post5.setAuthor(user2);
+        post5.setDescription("O choro é livre");
+        user2.addPost(post5);
+        List<Post> douglasPosts = user1.getPosts();
+        assertEquals(3, douglasPosts.size());
+        List<Post> vinniciusPosts = user2.getPosts();
+        assertEquals(2, vinniciusPosts.size());
+        assertEquals(post1, douglasPosts.get(0));
+        assertEquals(post2, douglasPosts.get(1));
+        assertEquals(post3, douglasPosts.get(2));
+        assertEquals(post4, vinniciusPosts.get(0));
+        assertEquals(post5, vinniciusPosts.get(1));
+    }
 }
+
 
 
 

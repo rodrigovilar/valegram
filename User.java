@@ -1,4 +1,6 @@
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
     
@@ -7,9 +9,18 @@ public class User {
     private String login;
     private String bio;
     private Date created;
+    private List<Post> posts = new ArrayList<Post>();
     
     public User() {
         this.created = new Date();
+    }
+    
+    public void addPost(Post post) {
+        this.posts.add(post);
+    }
+    
+    public List<Post> getPosts() {
+        return posts;
     }
     
     public Date getCreated() {
