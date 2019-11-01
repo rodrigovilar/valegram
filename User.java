@@ -10,9 +10,40 @@ public class User {
     private String bio;
     private Date created;
     private List<Post> posts = new ArrayList<Post>();
+    private List <Relation> myFollowers = new ArrayList<Relation>();
+    private List <Relation> myFolloweds = new ArrayList<Relation>();
+   
     
     public User() {
         this.created = new Date();
+    }
+    
+    public void addFollowed(User toBeFollowed) {
+        Relation relation = new Relation ();
+        relation.setFollower(this);
+        relation.setFollowed(toBeFollowed);
+        this.myFolloweds.add(relation);
+        toBeFollowed.myFollowers.add(relation);
+    }
+    
+    public List<User> getFolloweds(){
+        List<User> temp = new ArrayList<User>();
+        for( Relation r : myFolloweds){
+            temp.add(r.getFollowed());
+        }
+        return temp;
+    }
+    
+    public List<User> getFollowers(){
+        List<User> temp = new ArrayList<User>();
+        for( Relation r : myFollowers){
+            temp.add(r.getFollower());
+        }
+        return temp;
+    }
+    
+    public List<Post> getFeed() {
+        return null;
     }
     
     public void addPost(Post post) {
