@@ -12,19 +12,20 @@ public class User {
     private List<Post> posts = new ArrayList<Post>();
     private List <Relation> myFollowers = new ArrayList<Relation>();
     private List <Relation> myFolloweds = new ArrayList<Relation>();
-   
+    private List<AccountType> accountTypes = new ArrayList<AccountType>();
     
-    public User() {
-        this.created = new Date();
+    public void addAccountType(AccountType accountType) {
+        this.accountTypes.add(accountType);
     }
     
-    public void addFollowed(User toBeFollowed) {
-        Relation relation = new Relation ();
-        relation.setFollower(this);
-        relation.setFollowed(toBeFollowed);
-        this.myFolloweds.add(relation);
-        toBeFollowed.myFollowers.add(relation);
+    public void addFollowed(Relation followed) {
+        this.myFolloweds.add(followed);
     }
+
+    public void addFollower(Relation follower) {
+        this.myFollowers.add(follower);
+    }
+
     
     public List<User> getFolloweds(){
         List<User> temp = new ArrayList<User>();
@@ -52,6 +53,10 @@ public class User {
     
     public List<Post> getPosts() {
         return posts;
+    }
+    
+    void setCreated(Date created) {
+        this.created = created;
     }
     
     public Date getCreated() {

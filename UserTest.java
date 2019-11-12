@@ -113,7 +113,28 @@ public class UserTest
         assertEquals(post4, vinniciusPosts.get(0));
         assertEquals(post5, vinniciusPosts.get(1));
     }
+
+    @Test
+    public void capitalistaMalvadao()
+    {
+        User user1 = new User();
+        user1.setLogin("severino.dcx");
+        user1.setEmail("sadfd@sdfasd.sdf");
+        user1.setBio("Bio de Biu");
+        user1.setPassword("assdsasdg");
+        Post post1 = new Post();
+        user1.addPost(post1);
+
+        Personal personal1 = new Personal();
+        personal1.setNickName("biu");
+        user1.addAccountType(personal1);
+
+        Business business1 = new Business();
+        business1.setAddress("Rua da Mangueira");
+        user1.addAccountType(business1);
+    }
 }
+
 
 
 

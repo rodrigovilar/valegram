@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=UserLogic
+comment1.params=
+comment1.target=User\ createUser()
+comment2.params=login
+comment2.target=User\ getUserByLogin(java.lang.String)
+comment3.params=follower\ toBeFollowed
+comment3.target=void\ addFollowed(User,\ User)
+numComments=4
